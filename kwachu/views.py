@@ -7,6 +7,9 @@ from django.http import HttpResponse
 def index(request):
     html = f'''
         <html>
+        <head>
+        <title>Kwachu App</title>
+        </head>
             <body>
                 <h1>Hello Welcome To Kwachu</h1>
             </body>
