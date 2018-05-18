@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'passanger.apps.PassangerConfig',
     'driver.apps.DriverConfig',
     'django.contrib.admin',
     'django.contrib.auth',
