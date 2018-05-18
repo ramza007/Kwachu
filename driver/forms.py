@@ -10,3 +10,12 @@ class NewDriver(forms.ModelForm):
     class Meta:
         model = Driver
         fields = ('first_name', 'last_name', 'phone_number')
+
+
+class DriverLogin(forms.ModelForm):
+    '''
+    Class to create a form for a user to sign in as a driver
+    '''
+    class Meta:
+        model = Driver
+        fields = ('phone_number',)
