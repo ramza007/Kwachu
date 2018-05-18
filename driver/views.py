@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .forms import NewDriver, DriverLogin
+from django.core.exceptions import ObjectDoesNotExist
 
 # Create your views here.
 def driverhome(request):
@@ -59,3 +60,42 @@ def new_driver(request):
         form = NewDriver()
 
         return render(request, 'registration/registration_form.html', {"title": title, "form": form})
+
+
+def driver_login(request):
+    '''
+    View function to display login form for a driver
+    '''
+    title = "Sign In Driver"
+
+    try:
+
+        if request.method == 'POST':
+
+            form = DriverLogin(request.POST)
+
+            if form.is_valid:
+
+                phone_number = request.POST.get('phone_number')
+
+                try:
+                    found_driver = Driver.objects.get(
+                        phone_number=phone_number)
+
+                    return redirect(driver, found_driver.id)
+
+                except ObjectDoesNotExist:
+                    raise Http404()
+
+            else:
+
+                messages.error(request, ('Please correct the error below.'))
+
+        else:
+            form = DriverLogin()
+
+            return render(request, 'registration/login.html', {"title": title, "form": form})
+
+    except ObjectDoesNotExist:
+        return redirect(new_driver)
+        # raise Http404()
