@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-
+from django.core.exceptions import ObjectDoesNotExist
 # Create your views here.
 
 
@@ -15,4 +15,4 @@ def index(request):
             </body>
         </html>
             '''
-    return HttpResponse(html)
+    return render(request, 'index.html')

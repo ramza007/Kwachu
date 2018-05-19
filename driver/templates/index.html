@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Kwachu App</title>
+</head>
+
+<style>
+    .empty{
+        padding: 0.5%;
+    }
+    body{
+        background-color: black;
+    }
+    .container-1{
+        text-align: center;
+        background-color: orange;
+        padding: 10%;
+        border-radius: 20px;
+    }
+
+    .container-2{
+        text-align: center;;
+        background-color: chartreuse;
+        padding: 10%;
+        border-radius: 20px;
+    }
+
+    .jumbotron{
+        background-color: aliceblue;
+        text-align: center;
+        border-radius: 20px;
+
+    }
+</style>
+<body>
+    <div class="jumbotron">
+        <h1>Welcome To Kwachu</h1>
+    </div>
+    <div class="container">
+        <!--Driver side-->
+        <a href="{%url 'newdriver'%}">
+
+            <div class="container-1">
+                <h1>Driver</h1> 
+            </div>
+        </a>
+        <!--End of driver side -->
+
+        <div class="empty"></div>
+
+        <!--Passanger side-->
+        <a href="{%url 'newpassenger'%}">
+            <div class="container-2">
+                <h1>Passanger</h1>
+            </div>
+        </a>
+        <!--End of passanger side-->
+    </div>
+</body>
+</html>
