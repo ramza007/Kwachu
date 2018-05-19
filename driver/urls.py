@@ -3,6 +3,6 @@ from . import views
 
 urlpatterns=[
     url('^$',views.driverhome,name = 'home'),
-    url(r'^new/driver/', views.new_driver, name="newdriver"),
-    url(r'^login/driver/', views.driver_login, name="driverlogin"),
+    url(r'^new/', views.new_driver, name="newdriver"),
+    url(r'^login/', views.driver_login, name="driverlogin"),
 ]
