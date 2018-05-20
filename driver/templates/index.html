@@ -8,17 +8,19 @@
 </head>
 
 <style>
-    .empty{
-        padding: 0.5%;
-    }
     body{
-        background-color: black;
+        background-color:white;
     }
     .container-1{
         text-align: center;
         background-color: orange;
         padding: 10%;
         border-radius: 20px;
+        float: left;
+        padding-left: 15%;
+        padding-right: 15%;
+        margin-top: 5%;
+        margin-left: 5%;
     }
 
     .container-2{
@@ -26,12 +28,18 @@
         background-color: chartreuse;
         padding: 10%;
         border-radius: 20px;
+        float: right;
+        padding-left: 15%;
+        padding-right: 15%;
+        margin-top: 5%;
+        margin-right: 5%;
     }
 
     .jumbotron{
         background-color: aliceblue;
         text-align: center;
         border-radius: 20px;
+        padding: 5%;
 
     }
 </style>
@@ -48,8 +56,6 @@
             </div>
         </a>
         <!--End of driver side -->
-
-        <div class="empty"></div>
 
         <!--Passanger side-->
         <a href="{%url 'newpassenger'%}">
