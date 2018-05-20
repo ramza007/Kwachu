@@ -224,3 +224,22 @@ def driver_profile(request, passenger_id, driver_profile_id):
 
         # raise Http404()
 
+
+def review_driver(request, passenger_id, driver_profile_id):
+    '''
+    Function that saves a driver review without reloading the page
+    '''
+    passenger = Passenger.objects.get(id=passenger_id)
+
+    driver_profile = DriverProfile.objects.get(id=driver_profile_id)
+
+    review_content = request.POST.get('review_content')
+
+    new_driver_review = DriverReview(
+        passenger=passenger, driver_profile=driver_profile, review_content=review_content)
+
+    new_driver_review.save()
+
+    data = {'success': 'Your review has successfully been saved'}
+
+    return JsonResponse(data)

@@ -68,3 +68,33 @@ def create_driverprofile(sender, instance, created, **kwargs):
 # @receiver(post_save, sender=Driver)
 def save_driverprofile(sender, instance, **kwargs):
     instance.driverprofile.save()
+
+
+class DriverReview(models.Model):
+    '''
+    Class that defines the reviews a passenger gives a driver
+    '''
+    # passenger = models.ForeignKey(Passenger, on_delete=models.CASCADE)
+
+    driver_profile = models.ForeignKey(DriverProfile, on_delete=models.CASCADE)
+
+    review_content = models.TextField()
+
+    def __str__(self):
+        return self.passenger.first_name + ' ' + self.passenger.last_name
+
+    @classmethod
+    def get_driver_reviews(self, driver_profile_id):
+        '''
+        Function that gets all the reviews a specific driver's profile gets from passengers
+
+        Args:
+            driver_profile_id : specific driver profile id
+
+        Returns:
+            driver_reviews : Driver Review objects belonging to a specific driver profile
+        '''
+        driver_reviews = DriverReview.objects.filter(
+            driver_profile=driver_profile_id)
+
+        return driver_reviews
