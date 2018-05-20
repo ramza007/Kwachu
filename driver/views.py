@@ -182,7 +182,7 @@ def update_driver_profile(request, id):
                 driver_profile_form = UpdateDriverProfile(
                     instance=found_driver.driverprofile)
 
-                return render(request, 'all-drivers/update-profile.html', {"title": title, "driver": found_driver, "driver_profile_form": driver_profile_form})
+                return render(request, 'driver/update-profile.html', {"title": title, "driver": found_driver, "driver_profile_form": driver_profile_form})
 
         else:
 
@@ -223,3 +223,4 @@ def driver_profile(request, passenger_id, driver_profile_id):
         return redirect(new_passenger)
 
         # raise Http404()
+

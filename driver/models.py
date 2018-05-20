@@ -32,10 +32,12 @@ class DriverProfile(models.Model):
     Class that defines a profile for a Driver
     '''
     driver = models.OneToOneField(Driver, on_delete=models.CASCADE)
-    # profile_pic = models.ImageField(
-    #     blank=True, upload_to="driver/profile-pic", default=DEFAULTDRIVERPROFILEPIC)
-    # car_image = models.ImageField(
-    #     blank=True, upload_to="car-image/", default=DEFAULTCAR)
+    profile_pic = models.ImageField(
+        blank=True, upload_to="driver/profile-pic")
+        # , default=DEFAULTDRIVERPROFILEPIC)
+    car_image = models.ImageField(
+        blank=True, upload_to="car-image/")
+        # , default=DEFAULTCAR)
     car_capacity = models.PositiveIntegerField(default=0, blank=True)
     car_number_plate = models.CharField(blank=True, max_length=255)
     car_color = models.CharField(max_length=255, blank=True)

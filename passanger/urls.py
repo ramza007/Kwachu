@@ -8,3 +8,7 @@ urlpatterns = [
     url(r'^login/', views.passenger_login, name="passengerlogin"),
     url(r'^new/', views.new_passenger, name="newpassenger"),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)
