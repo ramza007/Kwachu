@@ -277,3 +277,54 @@ def passenger_profile(request, driver_id, passenger_profile_id):
         return redirect(new_driver)
 
         # raise Http404()
+
+
+def new_journey(request, driver_profile_id):
+    '''
+    View function to display a form for creating a new travel plan 
+    '''
+    title = "New Journey"
+
+    try:
+
+        driver_profile = DriverProfile.objects.get(id=driver_profile_id)
+
+        found_driver = driver_profile.driver
+
+        drivers = Driver.objects.all()
+
+        if found_driver in drivers:
+
+            if request.method == 'POST':
+
+                form = NewTravelPlan(request.POST)
+
+                if form.is_valid:
+
+                    new_travel_plan = form.save(commit=False)
+
+                    new_travel_plan.driver_profile = driver_profile
+
+                    new_travel_plan.save()
+
+                    return redirect(current_journey, found_driver.id)
+
+                else:
+
+                    messages.error(
+                        request, ('Please correct the error below.'))
+
+            else:
+
+                form = NewTravelPlan()
+
+                return render(request, 'all-drivers/new-journey.html', {"title": title, "form": form, "driver": found_driver})
+
+        else:
+
+            return redirect(driver_login)
+
+    except ObjectDoesNotExist:
+        return redirect(new_driver)
+
+        # raise Http404()
