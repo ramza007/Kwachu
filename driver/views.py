@@ -328,3 +328,32 @@ def new_journey(request, driver_profile_id):
         return redirect(new_driver)
 
         # raise Http404()
+
+
+def current_journey(request, driver_id):
+    '''
+    View function to display a driver's travel plans
+    '''
+    drivers = Driver.objects.all()
+
+    try:
+
+        driver = Driver.objects.get(id=driver_id)
+
+        if driver in drivers:
+
+            driver_profile = driver.driverprofile
+
+            travel_plans = TravelPlan.objects.filter(
+                driver_profile=driver_profile)
+
+            title = f'{driver.first_name} {driver.last_name}\'s Journeys'
+
+            return render(request, 'drivers/current_journey.html', {"title": title, "driver": driver, "travel_plans": travel_plans, "driver_profile": driver_profile})
+
+        else:
+
+            return redirect(driver_login)
+
+    except ObjectDoesNotExist:
+        return redirect(new_driver)
