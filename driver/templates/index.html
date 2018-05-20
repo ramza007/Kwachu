@@ -19,7 +19,7 @@
         float: left;
         padding-left: 15%;
         padding-right: 15%;
-        margin-top: 5%;
+        margin-top: 2%;
         margin-left: 5%;
     }
 
@@ -31,16 +31,16 @@
         float: right;
         padding-left: 15%;
         padding-right: 15%;
-        margin-top: 5%;
+        margin-top: 2%;
         margin-right: 5%;
     }
 
-    .jumbotron{
+    .jumbotron, h1{
         background-color: aliceblue;
         text-align: center;
         border-radius: 20px;
-        padding: 5%;
-
+        padding: 2%;
+        font-size: 50px;
     }
 </style>
 <body>
@@ -52,7 +52,7 @@
         <a href="{%url 'newdriver'%}">
 
             <div class="container-1">
-                <h1>Driver</h1> 
+                <h2>Driver</h2> 
             </div>
         </a>
         <!--End of driver side -->
@@ -60,7 +60,7 @@
         <!--Passanger side-->
         <a href="{%url 'newpassenger'%}">
             <div class="container-2">
-                <h1>Passanger</h1>
+                <h2>Passanger</h2>
             </div>
         </a>
         <!--End of passanger side-->
