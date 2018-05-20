@@ -10,6 +10,7 @@ urlpatterns=[
     url( r'^profile/(\d+)/(\d+)', views.driver_profile, name="driverProfile"),
     url( r'^update/profile/(\d+)', views.update_driver_profile, name="updateDriverProfile"),
     url( r'^ajax/review-driver/profile/driver/(\d+)/(\d+)', views.review_driver, name="reviewDriver"),
+    url( r'^profile/passenger/(\d+)/(\d+)', views.passenger_profile, name="passengerProfile"),
 ]
 
 if settings.DEBUG:

@@ -243,3 +243,37 @@ def review_driver(request, passenger_id, driver_profile_id):
     data = {'success': 'Your review has successfully been saved'}
 
     return JsonResponse(data)
+
+
+def passenger_profile(request, driver_id, passenger_profile_id):
+    '''
+    View function to display list of driver profiles
+    '''
+    drivers = Driver.objects.all()
+
+    try:
+
+        driver = Driver.objects.get(id=driver_id)
+
+        if driver in drivers:
+
+            passenger_profile = PassengerProfile.objects.get(
+                id=passenger_profile_id)
+
+            title = f'{passenger_profile.passenger.first_name} {passenger_profile.passenger.last_name}\'s Profile'
+
+            reviews = PassengerReview.get_passenger_reviews(
+                passenger_profile_id)
+
+            form = ReviewPassengerForm()
+
+            return render(request, "driver/passenger-profile.html", {"title": title, "driver": driver, "passenger_profile": passenger_profile, "reviews": reviews, "form": form})
+
+        else:
+
+            return redirect(driver_login)
+
+    except ObjectDoesNotExist:
+        return redirect(new_driver)
+
+        # raise Http404()
