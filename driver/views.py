@@ -4,6 +4,7 @@ from django.http import Http404, JsonResponse
 from .forms import Driver, NewDriver, DriverLogin
 from django.core.exceptions import ObjectDoesNotExist
 from django.db import transaction
+from django.contrib import messages
 
 # Create your views here.
 def driverhome(request):
@@ -36,7 +37,6 @@ def new_driver(request):
             for existing_driver in drivers:
 
                 if int(new_driver.phone_number) != int(existing_driver.phone_number):
-                    # print('Not equal')
                     continue
 
                 elif int(new_driver.phone_number) == int(existing_driver.phone_number):

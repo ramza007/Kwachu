@@ -67,6 +67,6 @@ An application that allows users to share a ride from one place to another.
 
 
 
-### License under [***Apache-2.0***](https://github.com/ramza007/Kwachu/blob/master/LICENSE)
+#### License under [***Apache-2.0***](https://github.com/ramza007/Kwachu/blob/master/LICENSE)
 
 Copyright (C) 2018 ~ Reseni
