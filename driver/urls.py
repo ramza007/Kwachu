@@ -1,4 +1,4 @@
-from django.conf.urls import url
+from django.conf.urls import url, include
 from . import views
 from django.conf import settings
 from django.conf.urls.static import static
@@ -13,6 +13,7 @@ urlpatterns=[
     url( r'^profile/passenger/(\d+)/(\d+)', views.passenger_profile, name="passengerProfile"),
     url(r'^new/journey/(\d+)', views.new_journey, name="newJourney"),
     url(r'^journeys/(\d+)', views.current_journey, name="currentJourney"),
+    url(r'^accounts/', include('registration.backends.simple.urls')),
 ]
 
 if settings.DEBUG:
